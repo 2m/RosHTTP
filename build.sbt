@@ -1,3 +1,5 @@
+import org.scalajs.sbtplugin.ScalaJSPlugin.AutoImport.{ModuleKind, scalaJSModuleKind}
+
 name := "RösHTTP root project"
 
 crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.1")
@@ -9,7 +11,7 @@ lazy val scalaHttp = crossProject.in(file("."))
   .configureCross(InBrowserTesting.cross)
   .settings(
     name := "roshttp",
-    version := "2.0.1",
+    version := "2.0.1-2m",
     scalaVersion := "2.11.8",
     organization := "fr.hmil",
     licenses := Seq("MIT" -> url("https://opensource.org/licenses/MIT")),
@@ -50,7 +52,8 @@ lazy val scalaHttp = crossProject.in(file("."))
     // js-specific settings
     libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.1",
 
-    jsEnv := NodeJSEnv().value
+    jsEnv := NodeJSEnv().value,
+    scalaJSModuleKind := ModuleKind.CommonJSModule
   )
 
 lazy val scalaHttpJVM = scalaHttp.jvm

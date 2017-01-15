@@ -1,6 +1,6 @@
 package fr.hmil.roshttp.node
 
-private[roshttp] abstract class Module[T](val name: String, val inst: T) {
+private[roshttp] abstract class Module[T](val name: String, val inst: T, val module: T) {
   def isAvailable: Boolean = required.isDefined
 
   def required: Option[T] = Helpers.require(this)

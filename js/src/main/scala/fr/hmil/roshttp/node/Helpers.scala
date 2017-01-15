@@ -24,6 +24,8 @@ private[roshttp] object Helpers {
   def require[T](module: Module[T]): Option[T] = {
     if (!js.isUndefined(module.inst)) {
       Some(module.inst)
+    } else if (!js.isUndefined(module.module)) {
+      Some(module.module)
     } else if (isRequireAvailable) {
       Some(Global.require[T](module.name))
     } else {

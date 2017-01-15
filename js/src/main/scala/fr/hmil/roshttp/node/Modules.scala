@@ -1,6 +1,6 @@
 package fr.hmil.roshttp.node
 
-import fr.hmil.roshttp.node.http.{Http, Https}
+import fr.hmil.roshttp.node.http.{Http, HttpJsModule, Https, HttpsJsModule}
 
 
 /**
@@ -11,8 +11,8 @@ import fr.hmil.roshttp.node.http.{Http, Https}
   */
 private[roshttp] object Modules {
 
-  object HttpModule extends Module("http", Http)
-  object HttpsModule extends Module("https", Https)
+  object HttpModule extends Module("http", Http, HttpJsModule)
+  object HttpsModule extends Module("https", Https, HttpsJsModule)
 
   lazy val http: Http = HttpModule.api
   lazy val https: Https = HttpsModule.api
